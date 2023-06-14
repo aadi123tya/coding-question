@@ -1,0 +1,56 @@
+class Solution {
+    static class points implements Comparable<points> {
+
+        int element;
+        int index;
+
+        public points(int element, int index) {
+            this.element = element;
+            this.index = index;
+
+        }
+
+        @Override
+        public int compareTo(points p2) {
+
+            if(this.element==p2.element)
+            {
+                return this.index-p2.index;
+            }
+            else{
+                return this.element-p2.element;
+            }
+        }
+
+    }
+    public static int count1s (int a[][] ,  int i)
+    {
+        int count = 0;
+         for(int j = 0;j<a[0].length;j++)
+         {
+             if(a[i][j]==1)count++;
+
+         }
+        return count;
+
+    }
+    public static int[] kWeakestRows(int[][] mat, int k) {
+        int ans[] = new int[k];
+        PriorityQueue<points> pq = new PriorityQueue<>();
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < mat.length; i++) {
+            a.add(count1s(mat, i));
+        }
+
+        for (int i = 0; i < a.size(); i++) {
+
+            pq.add(new points(a.get(i), i));
+        }
+        for (int i = 0; i < k; i++) {
+
+            ans[i] = pq.remove().index;
+        }
+        return ans ;
+
+    }
+}
