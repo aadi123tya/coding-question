@@ -1,0 +1,25 @@
+ static void arrange(long arr[], int n)
+    {
+        long size =(long) arr.length;
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[(int)arr[i]]<size)
+            {
+                arr[i] = arr[(int)arr[i]]*size+arr[i];
+                
+            }
+            else{
+                long curr_num = arr[(int)arr[i]]%size;
+                arr[i] = curr_num*size+arr[i];
+                
+            }
+        }
+    
+        for(int i=0;i<arr.length;i++)
+        {
+            arr[i] = arr[i]/size;
+            
+            
+        }
+    }
+}
